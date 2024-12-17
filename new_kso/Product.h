@@ -6,7 +6,7 @@ class Product
 {
 public:
 	Product();
-	Product(std::string&& name, double price);
+	Product(const std::string&& name, double price);
 
 	std::string GetName() const noexcept;
 	double GetPrice() const noexcept;

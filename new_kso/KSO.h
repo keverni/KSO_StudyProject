@@ -10,8 +10,8 @@ public:
 	KSO();
 
 public:
-	void AddProduct(std::string&& NameProduct);
-	void RemoveProduct(std::string&& NameProduct);
+	void AddProduct(const std::string&& NameProduct);
+	void RemoveProduct(const std::string&& NameProduct);
 	std::list<Product> GetCart() const noexcept;
 	double GetPrice() const noexcept;
 

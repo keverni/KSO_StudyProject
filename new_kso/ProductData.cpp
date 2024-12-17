@@ -1,7 +1,7 @@
 #include "ProductData.h"
 #include <stdexcept>
 
-void Database::AddProduct(Product&& product)
+void Database::AddProduct(const Product&& product)
 {
 	if (!product.IsValid())
 	{
@@ -17,7 +17,7 @@ void Database::AddProduct(Product&& product)
 	m_Products[hash] = product;
 }
 
-void Database::EditProduct(Product&& product)
+void Database::EditProduct(const Product&& product)
 {
 	if (!product.IsValid())
 	{
@@ -33,24 +33,24 @@ void Database::EditProduct(Product&& product)
 	m_Products[hash] = product;
 }
 
-void Database::RemoveProduct(std::string&& name)
+void Database::RemoveProduct(const std::string&& name)
 {
 	if (name.empty())
 	{
 		throw std::invalid_argument("Invalid product");
 	}
 
-	m_Products.erase(Hash(std::move(name)));
+	m_Products.erase(Hash(std::forward<const std::string&&>(name)));
 }
 
-Product Database::GetProduct(std::string&& name)
+Product Database::GetProduct(const std::string&& name)
 {
 	if (name.empty())
 	{
 		throw std::invalid_argument("Invalid name");
 	}
 
-	const auto hash = Hash(std::move(name));
+	const auto hash = Hash(std::forward<const std::string&&>(name));
 	if (!m_Products.contains(hash))
 	{
 		throw std::runtime_error("Product doesn't exist");
@@ -59,7 +59,7 @@ Product Database::GetProduct(std::string&& name)
 	return m_Products[hash];
 }
 
-size_t Database::Hash(std::string&& name) const noexcept
+size_t Database::Hash(const std::string&& name) const noexcept
 {
-	return std::hash<std::string>{}(std::move(name));
+	return std::hash<std::string>{}(std::forward<const std::string&&>(name));
 }

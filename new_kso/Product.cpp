@@ -5,8 +5,8 @@ Product::Product() :
 {
 }
 
-Product::Product(std::string&& name, double price) :
-	m_Name(std::move(name)),
+Product::Product(const std::string&& name, double price) :
+	m_Name(std::forward<const std::string&&>(name)),
 	m_Price(price)
 {
 }

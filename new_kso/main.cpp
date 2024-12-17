@@ -3,7 +3,7 @@
 
 int main()
 {
-	KSO kso;
+	KSO kso{};
 	int Command{ 0 };
 	while (true)
 	{
@@ -11,7 +11,7 @@ int main()
 		std::cin >> Command;
 		if (Command == 1)
 		{
-			std::string Product{""};
+			std::string Product{};
 			std::cout << "Input name of product to append: ";
 			std::cin >> Product;
 			try
@@ -27,7 +27,7 @@ int main()
 		}
 		else if (Command == 2)
 		{
-			std::string Product{""};
+			std::string Product{};
 			std::cout << "Input name of product to remove: ";
 			std::cin >> Product;
 			try
@@ -43,7 +43,7 @@ int main()
 		}
 		else if (Command == 3)
 		{
-			auto ProductCart = kso.GetCart();
+			auto ProductCart{ kso.GetCart() };
 			std::cout << "Name\tPrice" << std::endl;
 			for (auto el : ProductCart)
 			{
@@ -54,7 +54,7 @@ int main()
 		}
 		else if (Command == 4)
 		{
-			std::string ask{""};
+			std::string ask{};
 			std::cout << "Do you want to pay? ";
 			std::cin >> ask;
 			if (ask == "Yes" || ask == "yes")

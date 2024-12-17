@@ -6,15 +6,15 @@
 class Database
 {
 public:
-	void AddProduct(Product&& product);
-	void EditProduct(Product&& product);
+	void AddProduct(const Product&& product);
+	void EditProduct(const Product&& product);
 
-	void RemoveProduct(std::string&& name);
-	Product GetProduct(std::string&& name);
+	void RemoveProduct(const std::string&& name);
+	Product GetProduct(const std::string&& name);
 
-	size_t Hash(std::string&& name) const noexcept;
+	size_t Hash(const std::string&& name) const noexcept;
 
 private:
-	std::unordered_map<size_t, Product> m_Products;
+	std::unordered_map<size_t, Product> m_Products{};
 
 };
