@@ -1,9 +1,9 @@
 #pragma once
 
-#include "Product.h"
+#include "product.h"
 #include <unordered_map>
 
-class Database
+class Database final
 {
 public:
 	void AddProduct(const Product&& product);
@@ -16,5 +16,4 @@ public:
 
 private:
 	std::unordered_map<size_t, Product> m_Products{};
-
 };

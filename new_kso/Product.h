@@ -2,7 +2,7 @@
 
 #include <string>
 
-class Product
+class Product final
 {
 public:
 	Product();
@@ -15,6 +15,6 @@ public:
 	bool operator==(const Product& other) const noexcept;
 
 private:
-	std::string m_Name{ "" };
-	double		m_Price{ 0 };
+	std::string m_Name{};
+	double		m_Price{ 0.0 };
 };

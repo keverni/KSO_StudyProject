@@ -1,13 +1,13 @@
-#include "Product.h"
+#include "product.h"
 
 Product::Product() :
-	m_Price(0.0)
+	m_Price{ 0.0 }
 {
 }
 
 Product::Product(const std::string&& name, double price) :
-	m_Name(std::forward<const std::string&&>(name)),
-	m_Price(price)
+	m_Name{ std::forward<const std::string&&>(name) },
+	m_Price{ price }
 {
 }
 
@@ -28,6 +28,6 @@ double Product::GetPrice() const noexcept
 
 bool Product::IsValid() const noexcept
 {
-	return !m_Name.empty() && m_Price > 0.0;
+	return !m_Name.empty() && m_Price > 0;
 }
 

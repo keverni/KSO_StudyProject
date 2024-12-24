@@ -11,7 +11,7 @@ void Database::AddProduct(const Product&& product)
 	const auto hash = Hash(product.GetName());
 	if (m_Products.contains(hash))
 	{
-		throw std::runtime_error("Product already exist");
+		throw std::runtime_error("product already exist");
 	}
 
 	m_Products[hash] = product;
@@ -27,7 +27,7 @@ void Database::EditProduct(const Product&& product)
 	const auto hash = Hash(product.GetName());
 	if (!m_Products.contains(hash))
 	{
-		throw std::runtime_error("Product doesn't exist");
+		throw std::runtime_error("product doesn't exist");
 	}
 
 	m_Products[hash] = product;
@@ -53,7 +53,7 @@ Product Database::GetProduct(const std::string&& name)
 	const auto hash = Hash(std::forward<const std::string&&>(name));
 	if (!m_Products.contains(hash))
 	{
-		throw std::runtime_error("Product doesn't exist");
+		throw std::runtime_error("product doesn't exist");
 	}
 
 	return m_Products[hash];
